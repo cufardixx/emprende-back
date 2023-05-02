@@ -20,6 +20,6 @@ const server = http.createServer(requestController)
 //variable de un puerto para que pueda correr en produccion en render.com
 const PORT = process.env.PORT
 //ahora falta que el servidor se ponga a en escucha en un purto determinado! no hace nada mas q escuchar porq no esta dovolviendo una respuesta en el servidor
-server.listen(PORT, ()=>{
+server.listen(PORT, function(){
     console.log("Aplicacion corriendo en puerto " + PORT)
 })
