@@ -10,8 +10,7 @@
   "author": "facundopicia@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.22",
-    "start": "nodemon index.js"
+    "nodemon": "^2.0.22"
   },
   "dependencies": {
     "dotenv": "^16.0.3"

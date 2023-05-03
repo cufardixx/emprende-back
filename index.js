@@ -1,3 +1,6 @@
+//iniciar nodemon "start": "nodemon index.js"
+
+
 //lo q esta pasando es que nuestrea PC esta actuando de cliente y servidor!!!!!!!!!
 //requerrir libreria de dotenv
 require('dotenv').config()
