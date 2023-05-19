@@ -2,7 +2,7 @@
 
 //definicion
 function suma(parametro1,parametro2=0){
-    console.log({parametro1,parametro2});
+    //console.log({parametro1,parametro2});
     //if(typeof parametro1!== 'number' || typeof parametro2 !== 'number'){
     //    throw Error("Ambos parametros deben ser 'number'")
     //}
@@ -23,26 +23,14 @@ console.table({
     error3: suma("Facundo","Picia"),
 })
 
+
+
+
+
+
 //arrow funcion  calculo de Tasa Metabólica Basal
 
-const parametrosTMB = (obj) =>{
-
-    for(let i=0;i<obj.length;i++){
-        //console.log(obj[i].sexo);
-        if(obj[i].sexo === 'masculino'){
-            //console.log('correcto');
-            let TMB = 66 + 13.75 * obj[i].peso + 5 * obj[i].altura - 6.75 * obj[i].edad;
-            console.log(TMB);
-        }
-        else if(obj[i].sexo === 'femenino'){
-            //console.log('correcto');
-            let TMB =  655 + 9.56 * obj[i].peso + 1.85 * obj[i].altura - 4.68 * obj[i].edad;
-            console.log(TMB);
-        }
-        else{console.log('no es masculino ni femenino');}
-    }
-}
-let personas = [
+const personas = [
     {
       nombre: 'Juan',
       peso: 70,
@@ -65,8 +53,25 @@ let personas = [
       altura: 190
     }
   ];
+  
 
+const parametrosTMB = (obj) =>{
 
+    for(let i=0;i<obj.length;i++){
+        //console.log(obj[i].sexo);
+        if(obj[i].sexo === 'masculino'){
+            //console.log('correcto');
+            let TMB = 66 + 13.75 * obj[i].peso + 5 * obj[i].altura - 6.75 * obj[i].edad;
+            console.log('El calculo de Tasa Metabólica Basal para '+ obj[i].nombre + ': ' + TMB);
+        }
+        else if(obj[i].sexo === 'femenino'){
+            //console.log('correcto');
+            let TMB =  655 + 9.56 * obj[i].peso + 1.85 * obj[i].altura - 4.68 * obj[i].edad;
+            console.log('El calculo de Tasa Metabólica Basal para '+ obj[i].nombre + ': ' + TMB);
+        }
+        else{console.log('no es masculino ni femenino');}
+    }
+}
   
   parametrosTMB(personas);
 
