@@ -52,7 +52,7 @@ const logger = {
 app.use('/facundo', logger.logThis("Logeamos essssstoooo"))
 
 
-//tipo POST en un middelware
+//configuracion de ruta tipo POST en un middelware
 app.post("/api/tasks", function(req, res) {
   const body = req.body;
   console.log({ body });
@@ -68,15 +68,28 @@ app.post("/api/tasks", function(req, res) {
   })
 });
 
-//las validaciones con if se remplazo con este poco codigo
-//Configurar rutas
-app.get("/api/tasks", function(req, res){
-  Task.find().then((tasks)=>{
-    res.status(200).json({ok: true, data: task})
+
+//configuracion de ruta tipo DELETE en un middelware
+//a la ruta le engo que decir que espero recibir un id de la tarea que se esta eliminando '/:id'
+app.delete("/api/tasks/:id", function(req, res) {
+  const id = req.params.id; //me guardo el id
+  Task.findByIdAndDelete(id).then((deletedTask)=>{
+    res.status(200).json({ok: true, data:deletedTask})
   }).catch((err)=>{
-    res.status(400).json({ok: false, message: 'Tarea no encontrada'})
+    res.status(400).json({ok: false, message: "Error en eliminar tarea"})
+  })
+});
+
+
+//configuracion de ruta tipo get en un middelgare
+app.get("/api/tasks", function(req,res){
+  Task.find().then((tasks)=>{
+      res.status(200).json({ok: true, data: tasks})
+  }).catch((err)=>{
+      res.status(400).json({ok: false, message: "Error al encontrar la tarea ",err})
   })
 })
+
 
 //Ahora para poder conectar el front con el back tengo que crear la ruta en este caso user, nos tiene que devolver un arreglo de usuarios
 //app.get('/user', (req, res) => {
