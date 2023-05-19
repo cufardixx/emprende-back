@@ -62,9 +62,23 @@ app.post("/api/tasks", function(req, res) {
     hello: "hola",
   }).then((createdTask)=>{
 
-    res.status(200).json({ ok: true, message: "Tarea creada con éxito", data: createdTask });
+    res.status(201).json({ ok: true, message: "Tarea creada con éxito", data: createdTask });
   }).catch((err)=>{
     res.status(400).json({ok: false, message: "Error al crear la tarea"})
+  })
+});
+
+//configuracion de ruta tipo PUT en un middelware
+app.put("/api/tasks/:id", function(req, res) {
+  const body = req.body;
+  const id = req.params.id
+
+  Task.findByIdAndUpdate(id,{
+    name: body.text,
+  }).then((updateTask)=>{
+    res.status(200).json({ok:true, data: updateTask})
+  }).catch(()=>{
+    res.status(400).json({ok:false, message: "Error al editar tarea"})
   })
 });
 
